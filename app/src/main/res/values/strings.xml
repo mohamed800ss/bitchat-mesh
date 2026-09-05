@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">BitChat Mesh</string>
+    <string name="discover">Discover</string>
+    <string name="advertise">Advertise</string>
+    <string name="stop">Stop</string>
+    <string name="status_disconnected">Disconnected</string>
+    <string name="status_connecting">Connecting...</string>
+    <string name="status_connected">Connected</string>
+    <string name="type_message">Type a message...</string>
+    <string name="send">Send</string>
+</resources>
