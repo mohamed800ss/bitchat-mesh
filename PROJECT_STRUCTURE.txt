@@ -1,0 +1,71 @@
+BitChat Mesh - Project Structure
+================================
+
+BitChatMesh/
+├── app/
+│   ├── build.gradle                          # Gradle configuration with dependencies
+│   ├── src/
+│   │   └── main/
+│   │       ├── AndroidManifest.xml           # App manifest with permissions
+│   │       ├── java/
+│   │       │   └── com/bitchat/mesh/
+│   │       │       ├── MainActivity.java     # Main activity (device discovery & connection)
+│   │       │       ├── ChatActivity.java     # Chat UI activity
+│   │       │       ├── ConnectionManager.java# Manages Nearby Connections API
+│   │       │       ├── Message.java          # Message data model
+│   │       │       ├── MessageAdapter.java   # ListView adapter for messages
+│   │       │       └── CryptoUtils.java      # AES-256 encryption/decryption
+│   │       └── res/
+│   │           ├── layout/
+│   │           │   ├── activity_main.xml     # Main UI layout
+│   │           │   ├── activity_chat.xml     # Chat UI layout
+│   │           │   └── item_message.xml      # Message item layout
+│   │           └── values/
+│   │               └── strings.xml           # String resources
+│
+├── README.md                                 # Installation guide for AIDE
+└── PROJECT_STRUCTURE.txt                     # This file
+
+Key Features:
+=============
+
+1. Mesh Networking:
+   - Uses Google Nearby Connections API (P2P_CLUSTER strategy)
+   - Supports up to 100-200 meter range
+   - Automatic multi-hop message relay
+
+2. Encryption:
+   - AES-256 CBC mode encryption
+   - All messages encrypted before transmission
+   - Shared secret key (can be exchanged via QR code in production)
+
+3. Permissions Handling:
+   - Android 12+ Bluetooth permissions (BLUETOOTH_SCAN, BLUETOOTH_ADVERTISE, BLUETOOTH_CONNECT)
+   - Android 13+ Wi-Fi permissions (NEARBY_WIFI_DEVICES)
+   - Location permissions for Nearby Connections API
+
+4. UI/UX:
+   - Material Design compatible
+   - Simple device discovery interface
+   - Real-time chat with message timestamps
+   - Connection status indicator
+
+5. Multi-Hop Routing:
+   - Message deduplication using message IDs
+   - Automatic relay to connected nodes
+   - Hop count tracking
+
+Dependencies:
+==============
+
+- androidx.appcompat:appcompat:1.5.1
+- com.google.android.material:material:1.7.0
+- androidx.constraintlayout:constraintlayout:2.1.4
+- com.google.android.gms:play-services-nearby:18.3.0
+- com.google.code.gson:gson:2.10
+
+Compilation Target:
+====================
+
+- Target SDK: 33 (Android 13)
+- Min SDK: 21 (Android 5.0)
